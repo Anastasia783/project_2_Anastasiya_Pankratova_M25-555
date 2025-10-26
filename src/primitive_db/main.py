@@ -1,10 +1,9 @@
-from .engine import run_engine
+from .engine import run
 
 
 def main() -> None:
     """Main function that runs the database project."""
-    print("DB project is running!")
-    run_engine()
+    run()
 
 
 if __name__ == "__main__":

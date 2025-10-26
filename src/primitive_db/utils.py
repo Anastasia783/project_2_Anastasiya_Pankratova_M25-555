@@ -1,5 +1,3 @@
-"""Utility functions for file operations."""
-
 import json
 import os
 from typing import Any, Dict
@@ -15,7 +13,7 @@ def ensure_data_dir() -> None:
 def load_metadata() -> Dict[str, Any]:
     """Load database metadata from file."""
     try:
-        with open(META_FILE, 'r') as f:
+        with open(META_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
         return {}
@@ -23,15 +21,15 @@ def load_metadata() -> Dict[str, Any]:
 
 def save_metadata(metadata: Dict[str, Any]) -> None:
     """Save database metadata to file."""
-    with open(META_FILE, 'w') as f:
-        json.dump(metadata, f, indent=2)
+    with open(META_FILE, 'w', encoding='utf-8') as f:
+        json.dump(metadata, f, indent=2, ensure_ascii=False)
 
 
 def load_table_data(table_name: str) -> list:
     """Load table data from file."""
     file_path = os.path.join(DATA_DIR, f"{table_name}.json")
     try:
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
         return []
@@ -41,5 +39,14 @@ def save_table_data(table_name: str, data: list) -> None:
     """Save table data to file."""
     ensure_data_dir()
     file_path = os.path.join(DATA_DIR, f"{table_name}.json")
-    with open(file_path, 'w') as f:
-        json.dump(data, f, indent=2)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def delete_table_file(table_name: str) -> None:
+    """Delete table data file."""
+    file_path = os.path.join(DATA_DIR, f"{table_name}.json")
+    try:
+        os.remove(file_path)
+    except FileNotFoundError:
+        pass

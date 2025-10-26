@@ -2,7 +2,7 @@
 name = "primitive-db"
 version = "0.1.0"
 description = "A simple file-based database management system"
-authors = ["Anastasia Pankratova <7834367@mail.ru>"]
+authors = ["Anastasia Pankratova <your.email@example.com>"]
 readme = "README.md"
 packages = [
     {include = "src", from = "."},
