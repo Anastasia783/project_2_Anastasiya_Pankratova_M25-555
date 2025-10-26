@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "primitive-db"
+version = "0.1.0"
+description = "A simple file-based database management system"
+authors = ["Anastasia Pankratova <7834367@mail.ru>"]
+readme = "README.md"
+packages = [
+    {include = "src", from = "."},
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+prettytable = "^3.9.0"
+prompt-toolkit = "^3.0.43"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.6"
+
+[tool.poetry.scripts]
+project = "src.primitive_db.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
