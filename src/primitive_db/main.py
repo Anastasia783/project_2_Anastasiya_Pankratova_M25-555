@@ -1,9 +1,9 @@
-from .engine import run
+from .engine import run_database
 
 
 def main() -> None:
-    """Main function that runs the database project."""
-    run()
+    """Основная функция."""
+    run_database()
 
 
 if __name__ == "__main__":

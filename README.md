@@ -1,5 +1,134 @@
-# Primitive Database Project
+## Описание
+Простая реляционная база данных, реализованная на Python с использованием файловой системы для хранения данных. Проект разработан для освоения принципов работы с базами данных, CRUD-операций.
 
-A simple file-based database management system implemented in Python.
+## Функции
+Полный набор CRUD операций: Create, Read, Update, Delete
+SQL-подобный синтаксис
+Автоматическая генерация ID
+Валидация типов данных:  int, str, bool
+Файловое хранение: Данные сохраняются в JSON-файлах
+Красивый вывод: Табличное отображение данных через PrettyTable
+Обработка ошибок: Информативные сообщения об ошибках
 
-## Project Structure
+## Требования
+Python 3.8 или выше
+
+Poetry для управления зависимостями
+
+## Установка
+
+# Клонируйте репозиторий
+git clone <git@github.com:Anastasia783/project_2_Anastasiya_Pankratova_M25-555.git>
+cd primitive-db
+
+# Установите зависимости через Poetry
+poetry install
+# Или используйте Makefile
+make install
+
+## Запуск
+
+# Запуск базы данных
+poetry run database
+# Или через Makefile
+make run
+
+## Демонстрация работы
+https://asciinema.org/a/Ngnappl2WTOcaEQMTz0F0WAeb
+
+Для просмотра демонстрации нажмите на изображение выше
+
+## Доступные команды
+Создание таблицы
+sql
+
+CREATE TABLE имя_таблицы (столбец1 тип1, столбец2 тип2, ...)
+## Пример:
+
+sql
+CREATE TABLE users (name str, age int, is_active bool)
+
+## Вставка данных
+sql
+INSERT INTO имя_таблицы VALUES (значение1, значение2, ...)
+
+## Пример:
+
+sql
+INSERT INTO users VALUES ("Sergei", 28, true)
+
+## Выборка данных
+sql
+SELECT FROM имя_таблицы [WHERE условие]
+
+## Пример:
+
+sql
+SELECT FROM users
+SELECT FROM users WHERE age > 25
+SELECT FROM users WHERE name = "Sergei"
+
+## Обновление данных
+sql
+UPDATE имя_таблицы SET столбец=новое_значение [WHERE условие]
+
+## Пример:
+
+sql
+UPDATE users SET age = 29 WHERE name = "Sergei"
+
+## Удаление данных
+sql
+DELETE FROM имя_таблицы [WHERE условие]
+
+## Пример:
+sql
+DELETE FROM users WHERE ID = 1
+
+## Информация о таблице
+sql
+INFO имя_таблицы
+
+## Пример:
+
+sql
+INFO users
+Справка
+sql
+HELP
+Выход
+sql
+EXIT
+
+## Архитектура проекта
+text
+primitive_db/
+├── src/primitive_db/
+│   ├── __init__.py
+│   ├── main.py             
+│   ├── engine.py          
+│   ├── core.py             
+│   ├── utils.py             
+│   ├── parser.py           
+│   ├── decorators.py        
+│   └── constants.py       
+├                
+├── data/                  
+├── pyproject.toml           
+├── README.md               
+└── Makefile                
+
+
+## Запуск линтера
+
+poetry run ruff check .
+
+
+
+## Очистка проекта
+
+make clean
+
+## Автор
+Анастасия Панкратова
+Студентка группы M25-555
